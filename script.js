@@ -17,7 +17,7 @@ function getComputerChoice() {
 };
 
 function getHumanChoice() {
-    let yourChoice = prompt("Roshambo! Pick a choice - rock, paper or scissors. Check with the inspect tool to see the output.");
+    let yourChoice = prompt("Five rounds Roshambo! Pick a choice - rock, paper or scissors. Check with the inspect tool to see the output.");
     switch(yourChoice.toLowerCase()) {
         case "rock":
         return "rock";
