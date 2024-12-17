@@ -1,13 +1,13 @@
 let humanScore = 0;
 let computerScore = 0;
 
-function playGame() {
-    for(let rounds = 0; rounds < 5; rounds++) {
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-        console.log(playRound(humanSelection, computerSelection));
-    }
-}
+// function playGame() {
+//     for(let rounds = 0; rounds < 5; rounds++) {
+//         let humanSelection = getHumanChoice();
+//         let computerSelection = getComputerChoice();
+//         console.log(playRound(humanSelection, computerSelection));
+//     }
+// }
 
 
 
@@ -36,14 +36,31 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice) {
     if(humanChoice == null) return "Invalid Input";
     if(humanChoice === computerChoice) {
-        return "Draw!";
+        document.getElementById("result").innerText = "Draw!";
     } else if((humanChoice === "rock" && computerChoice === "paper") || (humanChoice === "scissors" && computerChoice === "rock") || (humanChoice === "paper" && computerChoice === "scissors")) {
         computerScore++;
-        return "Computer Wins! " + "Human Score: " + humanScore + " Computer Score: " + computerScore;
+        document.getElementById("result").innerText = "Computer Wins! " + "Human Score: " + humanScore + " Computer Score: " + computerScore;
     } else {
         humanScore++;
-        return "Human Wins! " + "Human Score: " + humanScore + " Computer Score: " + computerScore;
+        document.getElementById("result").innerText = "Human Wins! " + "Human Score: " + humanScore + " Computer Score: " + computerScore;
+    }
+    if(humanScore === 5) {
+        document.getElementById("result").innerText = "Game won by Human!";
+        document.getElementById("reset").style.display = "inline";
+        document.getElementById("choices").style.display = "none";
+    }
+    if(computerScore === 5) {
+        document.getElementById("result").innerText = "Game won by Computer!";
+        document.getElementById("reset").style.display = "inline";
+        document.getElementById("choices").style.display = "none";
     }
 }
 
-playGame();
+function resetRound() {
+    humanScore = 0;
+    computerScore = 0;
+    document.getElementById("reset").style.display = "none";
+    document.getElementById("choices").style.display = "inline";
+}
+
+// playGame();
